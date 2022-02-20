@@ -19,14 +19,14 @@ app.get("/", (req, res) => {
 
   db("choice")
     .insert({
-      userId: req.query.userId,
-      sevenTrust,
-      nineTrust,
+      userid: req.query.userId,
+      seventrust: sevenTrust,
+      ninetrust: nineTrust,
     })
     .then(() => {
       db("choice")
-        .where({ sevenTrust, nineTrust })
-        .count("userId")
+        .where({ seventrust: sevenTrust, ninetrust: nineTrust })
+        .count("userid")
         .then((data) => data[0].count)
         .then((count) => {
           db("choice")
