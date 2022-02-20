@@ -15,28 +15,36 @@ const db = knex({
   },
 });
 
-console.log(
-  db
-    .select("*")
-    .from("Choice")
-    .then((data) => {
-      console.log(data);
-    })
-);
-
 app.get("/", (req, res) => {
-  db("Choice").insert({
-    userId: req.query.userId,
-    sevenTrust: req.query.sevenTrust === "true",
-    nineTrust: req.query.nineTrust === "true",
-  });
-  const resData = {
-    type: "RealWorld.Commands.DisplayHtml",
-    parameters: {
-      content: `<p>${req.query.userId}</p>`,
-    },
-  };
-  res.send(resData);
+  const sevenTrust = req.query.sevenTrust === "true";
+  const nineTrust = req.query.nineTrust === "true";
+
+  db("Choice")
+    .insert({
+      userId: req.query.userId,
+      sevenTrust,
+      nineTrust,
+    })
+    .then(() => {
+      db("Choice")
+        .where({ sevenTrust, nineTrust })
+        .count("userId")
+        .then((data) => data[0].count)
+        .then((count) => {
+          db("Choice")
+            .count("id")
+            .then((data) => {
+              const percentage = Math.floor((count / data[0].count) * 100);
+              const resData = {
+                type: "RealWorld.Commands.DisplayHtml",
+                parameters: {
+                  content: `<p>${percentage}%의 사용자가 선택했습니다.</p>`,
+                },
+              };
+              res.send(resData);
+            });
+        });
+    });
 });
 
 app.listen(process.env.PORT || 3000);
