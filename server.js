@@ -27,8 +27,8 @@ console.log(
 app.get("/", (req, res) => {
   db("Choice").insert({
     userId: req.query.userId,
-    sevenTrust: req.query.sevenTrust,
-    nineTrust: req.query.nineTrust,
+    sevenTrust: req.query.sevenTrust === "true",
+    nineTrust: req.query.nineTrust === "true",
   });
   const resData = {
     type: "RealWorld.Commands.DisplayHtml",
