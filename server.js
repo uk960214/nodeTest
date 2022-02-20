@@ -17,19 +17,19 @@ app.get("/", (req, res) => {
   const sevenTrust = req.query.sevenTrust === "true";
   const nineTrust = req.query.nineTrust === "true";
 
-  db("Choice")
+  db("choice")
     .insert({
       userId: req.query.userId,
       sevenTrust,
       nineTrust,
     })
     .then(() => {
-      db("Choice")
+      db("choice")
         .where({ sevenTrust, nineTrust })
         .count("userId")
         .then((data) => data[0].count)
         .then((count) => {
-          db("Choice")
+          db("choice")
             .count("id")
             .then((data) => {
               const percentage = Math.floor((count / data[0].count) * 100);
