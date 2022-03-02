@@ -44,8 +44,7 @@ app.get("/", (req, res) => {
               });
           });
       });
-  }
-  res.send("invalid request");
+  } else res.send("invalid request");
 });
 
 app.get("/read-only", (req, res) => {
