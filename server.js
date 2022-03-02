@@ -45,4 +45,27 @@ app.get("/", (req, res) => {
     });
 });
 
+app.get("/read-only", (req, res) => {
+  const sevenTrust = req.query.sevenTrust === "true";
+  const nineTrust = req.query.nineTrust === "true";
+  db("choice")
+    .where({ seventrust: sevenTrust, ninetrust: nineTrust })
+    .count("userid")
+    .then((data) => data[0].count)
+    .then((count) => {
+      db("choice")
+        .count("id")
+        .then((data) => {
+          const percentage = Math.floor((count / data[0].count) * 100);
+          const resData = {
+            type: "RealWorld.Commands.DisplayHtml",
+            parameters: {
+              content: `<p>${percentage}%의 사용자가 선택했습니다.</p>`,
+            },
+          };
+          res.send(resData);
+        });
+    });
+});
+
 app.listen(process.env.PORT || 3000);
