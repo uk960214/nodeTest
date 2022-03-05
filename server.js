@@ -44,7 +44,7 @@ app.get("/", (req, res) => {
                     <br />
                     <p>세븐은 '${
                       sevenTrust ? "신뢰를" : "불신을"
-                    }' 선택했고, 나인은 '${
+                    }' 선택했고, <br /> 나인은 '${
                       nineTrust ? "신뢰를" : "불신을"
                     }' 선택했습니다.<p>
                     <p><strong style="color: red; font-size: 1.05rem;">${percentage}%</strong>의 사용자가 위와 같은 선택을 내렸습니다.</p>`,
@@ -79,7 +79,7 @@ app.get("/read-only", (req, res) => {
               <br />
               <p>세븐은 '${
                 sevenTrust ? "신뢰를" : "불신을"
-              }' 선택했고, 나인은 '${
+              }' 선택했고, <br /> 나인은 '${
                 nineTrust ? "신뢰를" : "불신을"
               }' 선택했습니다.<p>
               <p><strong style="color: red; font-size: 1.05rem;">${percentage}%</strong>의 사용자가 위와 같은 선택을 내렸습니다.</p>`,
