@@ -37,7 +37,15 @@ app.get("/", (req, res) => {
                 const resData = {
                   type: "RealWorld.Commands.DisplayHtml",
                   parameters: {
-                    content: `<p>${percentage}%의 사용자가 선택했습니다.</p>`,
+                    content: `
+                    <h1>엔딩 선택 통계</h1>
+                    <p>세븐은 '${
+                      sevenTrust ? "신뢰" : "불신"
+                    }을 선택했고, 나인은 '${
+                      nineTrust ? "신뢰" : "불신"
+                    }'을 선택했습니다.<p>
+                    <p>${percentage}%의 사용자가 위와 같은 선택을 내렸습니다.</p>
+                    `,
                   },
                 };
                 res.send(resData);
@@ -62,7 +70,12 @@ app.get("/read-only", (req, res) => {
           const resData = {
             type: "RealWorld.Commands.DisplayHtml",
             parameters: {
-              content: `<p>${percentage}%의 사용자가 선택했습니다.</p>`,
+              content: `
+              <h1>엔딩 선택 통계</h1>
+              <p>세븐은 '${sevenTrust ? "신뢰" : "불신"}을 선택했고, 나인은 '${
+                nineTrust ? "신뢰" : "불신"
+              }'을 선택했습니다.<p>
+                    <p>${percentage}%의 사용자가 위와 같은 선택을 내렸습니다.</p>`,
             },
           };
           res.send(resData);
