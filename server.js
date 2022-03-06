@@ -54,7 +54,7 @@ const resultTemplate = ({ sevenTrust, nineTrust, percentage }) => {
       }
     </style>
     <div class="container">
-      <h3 class="title">엔딩 선택 통계</h3>
+      <h3 class="title">엔딩 선택 결과</h3>
       <br />
       <br />
       <p class="choice-explain">
