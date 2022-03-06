@@ -45,6 +45,10 @@ app.get("/", (req, res) => {
                         font-family: 'Nanum Myeongjo', serif;
                       }
 
+                      p {
+                        font-family: 'Nanum Myeongjo', serif;
+                      }
+
                       .container {
                         text-align: center;
                       }
