@@ -39,6 +39,12 @@ app.get("/", (req, res) => {
                   parameters: {
                     content: `
                     <style>
+                      @import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap');
+
+                      * {
+                        font-family: 'Nanum Myeongjo', serif;
+                      }
+
                       .container {
                         text-align: center;
                       }
@@ -116,9 +122,12 @@ app.get("/read-only", (req, res) => {
               <style>
                 @import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap');
 
+                * {
+                  font-family: 'Nanum Myeongjo', serif;
+                }
+
                 .container {
                   text-align: center;
-                  font-family: 'Nanum Myeongjo', serif;
                 }
 
                 .agent-name,
