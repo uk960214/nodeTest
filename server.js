@@ -56,6 +56,10 @@ app.get("/", (req, res) => {
                       .distrust {
                         color: red;
                       }
+                      
+                      .result-percent {
+                        color: yellow
+                      }
                     </style>
                     <div class="container">
                       <h3>엔딩 선택 통계</h3>
@@ -126,6 +130,10 @@ app.get("/read-only", (req, res) => {
 
                 .distrust {
                   color: red;
+                }
+                
+                .result-percent {
+                  color: yellow
                 }
               </style>
               <div class="container">
