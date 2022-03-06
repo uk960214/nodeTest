@@ -38,18 +38,52 @@ app.get("/", (req, res) => {
                   type: "RealWorld.Commands.DisplayHtml",
                   parameters: {
                     content: `
-                    <h2 style="text-align:center;">엔딩 선택 통계</h2>
-                    <br />
-                    <br />
-                    <br />
-                    <p>세븐은 '${
-                      sevenTrust ? "신뢰를" : "불신을"
-                    }' 선택했고, <br /> 나인은 '${
-                      nineTrust ? "신뢰를" : "불신을"
-                    }' 선택했습니다.<p>
-                    <br />
-                    <br />
-                    <p><strong style="color: red; font-size: 1.1rem;">${percentage}%</strong>의 사용자가 위와 같은 선택을 내렸습니다.</p>`,
+                    <style>
+                      .container {
+                        text-align: center;
+                      }
+
+                      .agent-name,
+                      .choice,
+                      .result-percent {
+                        font-size: 1.1rem;
+                      }
+
+                      .trust {
+                        color: green;
+                      }
+
+                      .distrust {
+                        color: red;
+                      }
+                    </style>
+                    <div class="container">
+                      <h3>엔딩 선택 통계</h3>
+                      <br />
+                      <br />
+                      <p>
+                        <strong class="agent-name">세븐</strong>은 ${
+                          sevenTrust
+                            ? "<strong class='choice trust'>[신뢰]</strong>를"
+                            : "<strong class='choice distrust'>[불신]</strong>을"
+                        }
+                        <br />
+                        <strong class="agent-name">나인</strong>은 ${
+                          nineTrust
+                            ? "<strong class='choice trust'>[신뢰]</strong>를"
+                            : "<strong class='choice distrust'>[불신]</strong>을"
+                        } <br />
+                        선택했습니다.
+                      </p>
+                      <br />
+                      <br />
+                      <p>
+                        <strong class="result-percent">${percentage}%</strong>의 플레이어가
+                        <br />
+                        같은 선택을 했습니다.
+                      </p>
+                    </div>
+            `,
                   },
                 };
                 res.send(resData);
@@ -75,18 +109,52 @@ app.get("/read-only", (req, res) => {
             type: "RealWorld.Commands.DisplayHtml",
             parameters: {
               content: `
-              <h2 style="text-align:center;">엔딩 선택 통계</h2>
-              <br />
-              <br />
-              <br />
-              <p>세븐은 '${
-                sevenTrust ? "신뢰를" : "불신을"
-              }' 선택했고, <br /> 나인은 '${
-                nineTrust ? "신뢰를" : "불신을"
-              }' 선택했습니다.<p>
-              <br />
-              <br />
-              <p><strong style="color: red; font-size: 1.1rem;">${percentage}%</strong>의 사용자가 위와 같은 선택을 내렸습니다.</p>`,
+              <style>
+                .container {
+                  text-align: center;
+                }
+
+                .agent-name,
+                .choice,
+                .result-percent {
+                  font-size: 1.1rem;
+                }
+
+                .trust {
+                  color: green;
+                }
+
+                .distrust {
+                  color: red;
+                }
+              </style>
+              <div class="container">
+                <h3>엔딩 선택 통계</h3>
+                <br />
+                <br />
+                <p>
+                  <strong class="agent-name">세븐</strong>은 ${
+                    sevenTrust
+                      ? "<strong class='choice trust'>[신뢰]</strong>를"
+                      : "<strong class='choice distrust'>[불신]</strong>을"
+                  }
+                  <br />
+                  <strong class="agent-name">나인</strong>은 ${
+                    nineTrust
+                      ? "<strong class='choice trust'>[신뢰]</strong>를"
+                      : "<strong class='choice distrust'>[불신]</strong>을"
+                  } <br />
+                  선택했습니다.
+                </p>
+                <br />
+                <br />
+                <p>
+                  <strong class="result-percent">${percentage}%</strong>의 플레이어가
+                  <br />
+                  같은 선택을 했습니다.
+                </p>
+              </div>
+            `,
             },
           };
           res.send(resData);
