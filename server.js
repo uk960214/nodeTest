@@ -26,10 +26,14 @@ const resultTemplate = ({ sevenTrust, nineTrust, percentage }) => {
         text-align: center;
       }
 
+      .title {
+        font-family: sans-serif;
+      }
+
       .agent-name,
       .choice,
       .result-percent {
-        font-size: 1.1rem;
+        font-size: 1.3rem;
       }
 
       .trust {
@@ -50,7 +54,7 @@ const resultTemplate = ({ sevenTrust, nineTrust, percentage }) => {
       }
     </style>
     <div class="container">
-      <h3>엔딩 선택 통계</h3>
+      <h3 class="title">엔딩 선택 통계</h3>
       <br />
       <br />
       <p class="choice-explain">
