@@ -147,4 +147,8 @@ app.get("/read-only", (req, res) => {
     });
 });
 
+app.get("/reset-database", (req, res) => {
+  db("choice").truncate().then(res.send("success"));
+});
+
 app.listen(process.env.PORT || 3000);
