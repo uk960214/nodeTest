@@ -114,8 +114,11 @@ app.get("/read-only", (req, res) => {
             parameters: {
               content: `
               <style>
+                @import url('https://fonts.googleapis.com/css?family=Nanum+Myeongjo&display=swap');
+
                 .container {
                   text-align: center;
+                  font-family: 'Nanum Myeongjo', serif;
                 }
 
                 .agent-name,
