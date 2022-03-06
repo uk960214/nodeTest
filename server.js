@@ -43,6 +43,11 @@ const resultTemplate = ({ sevenTrust, nineTrust, percentage }) => {
       .result-percent {
         color: yellow
       }
+      
+      .choice-explain,
+      .percent-explain {
+        font-family: 'Nanum Myeongjo', serif;
+      }
     </style>
     <div class="container">
       <h3>엔딩 선택 통계</h3>
